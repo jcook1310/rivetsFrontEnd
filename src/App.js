@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 import Navbar from './components/navbar.js'
-import Rivets from './pages/Rivets'
+import Rivets from './pages/Rivets.js'
 
 class App extends Component {
     constructor(props){
@@ -35,14 +35,30 @@ class App extends Component {
         <Router>
             <div>
                 <Navbar />
-                <Route path="/" render={props => (
+                <Route exact path="/" render={props => (
                     <small className='subtitle'>Add a rivet</small>
                 )} />
-                <Route path="/rivets" component={Rivets} />
+                <Route exact path="/rivets" render={props => (
+                    <div>
+                        <Row>
+                            <Col xs={8}>
+                                ACME rivets
+                                <small className='subtitle'>All the Rivets</small>
+                            </Col>
+                            <Col xs={4}>
+                                <small>
+                                    <Link to='/' id='rivets-link'>Add a Rivet</Link>
+                                </small>
+                            </Col>
+                        </Row>
+                        <Rivets rivets={this.state.rivets} />
+                    </div>
+                )} />
             </div>
         </Router>
     );
   }
 }
+
 
 export default App;

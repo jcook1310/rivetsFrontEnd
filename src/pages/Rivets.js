@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import {
   Col,
-  Row
+  Row,
+  ListGroup,
+  ListGroupItem
 } from 'react-bootstrap'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import App from '../App.js'
 
 class Rivets extends Component {
   render() {
     return (
-        <Row>
-            <Col xs={8}>
-                ACME rivets
-                <small className='subtitle'>All the Rivets</small>
-            </Col>
-            <Col xs={4}>
-                <small>
-                    <Link to='/' id='rivets-link'>Add a Rivet</Link>
-                </small>
-            </Col>
-        </Row>
-    );
+      <Row>
+        <Col xs={12}>
+            <ListGroup>
+                {this.props.rivets.map((rivet, index) =>{
+                    return(
+                        <ListGroupItem
+                            key={index}
+                            header={
+                                <h4>
+                                    <span className='rivet-title'>
+                                        {rivet.title}
+                                    </span>
+                                        <small className='rivet-summary'>{rivet.summary}</small>
+                                </h4>
+                            }>
+                            <span className='rivet-desc'>
+                                {rivet.description}
+                            </span>
+                        </ListGroupItem>
+                    )
+                })}
+            </ListGroup>
+        </Col>
+      </Row>
+  );
   }
 }
 
