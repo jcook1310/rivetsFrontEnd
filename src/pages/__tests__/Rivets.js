@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Rivets from '../Rivets'
 import { mount } from 'enzyme'
+<<<<<<< HEAD
 import App from '../../App.js'
 
 const rivets = [
@@ -28,10 +29,17 @@ const rivets = [
 it('Rivets renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Rivets rivets={rivets}/>, div)
+=======
+
+it('Rivets renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(<Rivets />, div)
+>>>>>>> 30ce2bcf5dd5a274edb5c02d152ef92beba515fb
 })
 
 it('Renders the rivets', () => {
     const component = mount(<Rivets rivets={rivets} />)
+<<<<<<< HEAD
     const headings = component.find('.rivet-title')
     expect(headings.length).toBe(3)
 })
@@ -53,4 +61,8 @@ it('Renders the rivets description', () => {
     const component = mount(<Rivets rivets={rivets} />)
     const desc = component.find('.rivet-desc').first()
     expect(desc.text()).toBe("Gold rivet mined from the hill of San Francisco, forged in fire deep within Mordor.")
+=======
+    const headings = component.find('h4 > .rivet-name')
+    expect(headings.length).toBo(3)
+>>>>>>> 30ce2bcf5dd5a274edb5c02d152ef92beba515fb
 })
