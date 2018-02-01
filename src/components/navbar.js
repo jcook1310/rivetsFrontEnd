@@ -1,45 +1,40 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Nav, NavItem, Navbar, NavDropdown, MenuItem } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
-
-class Navbar extends Component {
+class NavigationBar extends Component {
   render() {
     return (
         <div>
-            <nav className="navbar navbar-dark bg-primary">
-                <a className="navbar-brand" href="#">ACME Rivet Company</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Rivets</a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Edit Rivets
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#">Create A New Rivet</a>
-                            <a className="dropdown-item" href="#">Edit Current Rivet</a>
-                            <a className="dropdown-item" href="#">Delete Rivet</a>
-                        </div>
-                        </li>
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                        <button className="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
-      </div>
+            <Navbar inverse collapseOnSelect>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  <a href="#brand">ACME Rivet Company</a>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+              </Navbar.Header>
+              <Navbar.Collapse>
+                <Nav>
+                  <NavItem eventKey={1} href="#">
+                        <Link to='/rivets'> See rivets</Link>
+                  </NavItem>
+                  <NavItem eventKey={2} href="#">
+                    Link
+                  </NavItem>
+                  <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                    <MenuItem eventKey={3.1}>Action</MenuItem>
+                    <MenuItem eventKey={3.2}>Another action</MenuItem>
+                    <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                    <MenuItem divider />
+                    <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                  </NavDropdown>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+        </div>
     );
   }
 }
 
-export default Navbar;
+export default NavigationBar;

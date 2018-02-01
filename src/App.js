@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
-import Navbar from './components/navbar.js'
+import NavigationBar from './components/navbar.js'
 import Rivets from './pages/Rivets.js'
+import {
+  Row,
+  Col
+} from 'react-bootstrap'
 
 class App extends Component {
     constructor(props){
@@ -34,25 +38,22 @@ class App extends Component {
     return (
         <Router>
             <div>
-                <Navbar />
+                <NavigationBar />
                 <Route exact path="/" render={props => (
-                    <small className='subtitle'>Add a rivet</small>
-                )} />
-                <Route exact path="/rivets" render={props => (
                     <div>
-                        <Row>
-                            <Col xs={8}>
-                                ACME rivets
-                                <small className='subtitle'>All the Rivets</small>
-                            </Col>
-                            <Col xs={4}>
-                                <small>
-                                    <Link to='/' id='rivets-link'>Add a Rivet</Link>
-                                </small>
-                            </Col>
-                        </Row>
-                        <Rivets rivets={this.state.rivets} />
+                        <small className='subtitle'>Add a rivet</small>
+                        <br />
+                        <Link to='/rivets'><button type="button" className="rivet-button"> See rivets</button></Link>
                     </div>
+                )} />
+
+                <Route exact path="/rivets" render={props => (
+                    <Row>
+                        <Col xs={4}>
+                            <Link to='/' id='rivets-link'>Add a Rivet</Link>
+                        </Col>
+                        <Rivets rivets={this.state.rivets} />
+                    </Row>
                 )} />
             </div>
         </Router>

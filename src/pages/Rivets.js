@@ -12,7 +12,7 @@ class Rivets extends Component {
     return (
       <Row>
         <Col xs={12}>
-            <ListGroup>
+            <ListGroup className="all-rivets">
                 {this.props.rivets.map((rivet, index) =>{
                     return(
                         <ListGroupItem
@@ -22,6 +22,7 @@ class Rivets extends Component {
                                     <span className='rivet-title'>
                                         {rivet.title}
                                     </span>
+                                    <br />
                                         <small className='rivet-summary'>{rivet.summary}</small>
                                 </h4>
                             }>
