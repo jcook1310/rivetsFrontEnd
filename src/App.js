@@ -17,7 +17,7 @@ class App extends Component {
                    id: 1,
                    title: 'Gold',
                    summary: 'Gold rivet',
-                   description: "Gold rivet mined from the hill of San Francisco, forged in fire deep within Mordor."
+                   description: "Gold rivet mined from the hills of San Francisco, forged in fire deep within Mordor."
                  },
                  {
                    id: 2,
